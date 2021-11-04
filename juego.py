@@ -1,10 +1,18 @@
 import random
-numero_aleatorio=random.randint(0,100)
+
+#El juego consiste en que el ORDENADOR escoge un número al azar (random)del 0 al 99.
+# El jugador tiene que adivinarlo con el  menor número de intentos posible.
+# Cada ves que el jugador se equivoca el ORDENADOR le tiene que dar una pista,  indicando
+# si el número escogido inicialmente es menor o mayoor que el propuest por el JUGADOR.
+ 
+numero_aleatorio=random.randint(min,max)
+min=0
+max=99
 numero_aleatorio= int
-print (numero_aleatorio)
-intento=0
-intentos= intento+1
-numero_usuario=int
+
+print("Soy el ordenador y voy a pensar un número entre" +str(min) +"y"str(max))
+print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
+print("Si te equivocas te doy pistas :) ")
 
 while True:
     if 0<numero_aleatorio<99:
