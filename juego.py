@@ -23,7 +23,7 @@ numero_secreto=random.randint(min,max)
 
 # Este chivatoo me muestra el numero secreto para que sea mas facil depurar el programa
 # Una vez funcione el programa  hay que comentarloo
-print("Chivato para depuracion. He pensado en el", numero_secreto)
+#print("Chivato para depuracion. He pensado en el", numero_secreto)
 #Empieza el juego y acabara cuando haya sido adivinado  el numero
 print()
 print("---Empieza el juego---")
@@ -58,3 +58,5 @@ while not encontrado:
 print("---El juego ha finalizado---")
 print()
 print(" El numero que había pensado es el " + str(numero_secreto) + " y lo has adivinado en " + str(intento) + " intentos ")
+
+#FIGMA: https://www.figma.com/file/qzGwgsoAD7svETincR3oqR/Untitled?node-id=0%3A1
