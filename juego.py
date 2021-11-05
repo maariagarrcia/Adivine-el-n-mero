@@ -1,4 +1,5 @@
 import random
+
 #El juego consiste en que el ORDENADOR escoge un número al azar (random)del 0 al 99.
 # El jugador tiene que adivinarlo con el  menor número de intentos posible.
 # Cada ves que el jugador se equivoca el ORDENADOR le tiene que dar una pista, indicando
@@ -9,7 +10,7 @@ min=0
 max=99
 
 # Preparativos antes de empezar el juego
-print("Soy el ordenador y voy a pensar un número entre" +  str(min) + "y" +  str(max))
+print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
 
@@ -22,7 +23,7 @@ numero_secreto=random.randint(min,max)
 
 # Este chivatoo me muestra el numero secreto para que sea mas facil depurar el programa
 # Una vez funcione el programa  hay que comentarloo
-#print("Chivato para depuracion. He pensado en el", numero_secreto)
+print("Chivato para depuracion. He pensado en el", numero_secreto)
 #Empieza el juego y acabara cuando haya sido adivinado  el numero
 print()
 print("---Empieza el juego---")
@@ -40,8 +41,8 @@ while not encontrado:
         else:
             if(min<=numero_usuario<=max):
                 break
-        else:
-            print("Solo acepto numeros entre" + str(min) + "y" + str(max))
+            else:
+                print("Solo acepto numeros entre " + str(min) + " y " + str(max))
     #Comparo el numero de usuario con el numero secreto y si son iguales  la variable
     #"encontrado"  valdra verdadero
     encontrado=(numero_secreto==numero_usuario)
