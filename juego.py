@@ -3,20 +3,24 @@ import random
 # El jugador tiene que adivinarlo con el  menor número de intentos posible.
 # Cada ves que el jugador se equivoca el ORDENADOR le tiene que dar una pista, indicando
 # si el número escogido inicialmente es menor o mayoor que el propuest por el JUGADOR.
- 
+
+# Modificando min y max puedes cambiar el rango de numeros del juego
 min=0
 max=99
 
-
+# Preparativos antes de empezar el juego
 print("Soy el ordenador y voy a pensar un número entre" +  str(min) + "y" +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
 
+#Variable booleana. Permite que el juego finalice cuando el jugador acierta
 encontrado= False
+# Cuenta el numero de intentoos que el jugadoor ha realizado
 intento=0
+#Seleccionar un numero de forma aleatoria
 numero_secreto=random.randint(min,max)
 
-print("Chivato para depuracion. He pensado en el", numero_secreto)
+#print("Chivato para depuracion. He pensado en el", numero_secreto)
 print()
 print("---Empieza el juego---")
 while not encontrado:
