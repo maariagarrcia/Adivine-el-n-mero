@@ -16,6 +16,9 @@ encontrado= False
 intento=0
 numero_secreto=random.randint(min,max)
 
+#print("Chivato para depuracion. He pensado en el", numero_secreto)
+print()
+print("---Empieza el juego---")
 while not encontrado:
     intento= intento+1
     numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
@@ -24,10 +27,11 @@ while not encontrado:
     
     if(encontrado):
         print("Has ganado")
-    elif(numero_secreto>numero_usuario):
-        print("Demasiado grande. El "+str(numero_usuario)+" es mayor que numero secreto")
+    elif(numero_usuario>numero_secreto):
+        print("Demasiado grande.7 El " +str(numero_usuario)+ " es MAYOR que el numero secreto")
     else:
-        print("Demasiado pequeño. El " + str(numero_usuario) + " es menor que numero secreto")
+        print("Demasiado pequeño. El " + str(numero_usuario) + " es MENOR que el numero secreto")
 
-print("\n>>>>> Lo has adivinado2 en"+str(intento) + "intentos <<<<<")
+print("Lo has adivinado2 en"+str(intento) + "intentos")
+print()
 print("El numero que había pensado es el " + str(numero_secreto))
