@@ -8,13 +8,13 @@ min=0
 max=99
 
 
-print("Soy el ordenador y voy a pensar un número entre" + str(min) + "y" + str(max))
+print("Soy el ordenador y voy a pensar un número entre" +  str(min) + "y" +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
 
 encontrado= False
 intento=0
-numero_secreto= random.randint(min,max)
+numero_secreto=random.randint(min,max)
 print("He pensado en el", numero_secreto)
 
 while not encontrado:
@@ -30,6 +30,5 @@ while not encontrado:
     else:
         print("Demasiado pequeño. El " + str(numero_usuario) + " es menor que numero secreto")
 
-print("\n>>>>> Lo has adivinadoo en"+str(intento) + "intentos <<<<<")
-print (">>>>> El numero que había pensado es el " +
-         str(numero_secreto + ' <<<<<\n')
+print("\n>>>>> Lo has adivinado en"+str(intento) + "intentos <<<<<")
+print("El numero que había pensado es el " + str(numero_secreto))
