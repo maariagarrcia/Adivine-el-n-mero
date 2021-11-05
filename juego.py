@@ -15,11 +15,10 @@ print("Si te equivocas te doy pistas :) ")
 encontrado= False
 intento=0
 numero_secreto=random.randint(min,max)
-print("He pensado en el", numero_secreto)
 
 while not encontrado:
     intento= intento+1
-    numero_usuario= int(input("Dime, ¿cual es el numero secreto?"))
+    numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
     encontrado=(numero_secreto==numero_usuario)
     print("intento" +str(intento)+'>', end="")
     
@@ -30,5 +29,5 @@ while not encontrado:
     else:
         print("Demasiado pequeño. El " + str(numero_usuario) + " es menor que numero secreto")
 
-print("\n>>>>> Lo has adivinado en"+str(intento) + "intentos <<<<<")
+print("\n>>>>> Lo has adivinado2 en"+str(intento) + "intentos <<<<<")
 print("El numero que había pensado es el " + str(numero_secreto))
