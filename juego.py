@@ -13,19 +13,37 @@ print("Soy el ordenador y voy a pensar un número entre" +  str(min) + "y" +  st
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
 
-#Variable booleana. Permite que el juego finalice cuando el jugador acierta
+# Variable booleana. Permite que el juego finalice cuando el jugador acierta
 encontrado= False
-# Cuenta el numero de intentoos que el jugadoor ha realizado
+# Cuenta el numero de intentos que el jugadoor ha realizado
 intento=0
-#Seleccionar un numero de forma aleatoria
+# Seleccionar un numero de forma aleatoria
 numero_secreto=random.randint(min,max)
 
+# Este chivatoo me muestra el numero secreto para que sea mas facil depurar el programa
+# Una vez funcione el programa  hay que comentarloo
 #print("Chivato para depuracion. He pensado en el", numero_secreto)
+#Empieza el juego y acabara cuando haya sido adivinado  el numero
 print()
 print("---Empieza el juego---")
 while not encontrado:
     intento= intento+1
-    numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
+    #Ahora vamos  a poner las siguientes condiciones:
+    #   Tiene que ser un numero ya que podria  el usuario introducir letras
+    #   Tiene que ser entre  el  0 y el 100 (min, max)
+    while True:
+        try:
+              numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
+        except:
+            print("Solo acepto numeros. Vuelve a intentarlo")
+            pass
+        else:
+            if(min<=numero_usuario<=max):
+                break
+        else:
+            print("Solo acepto numeros entre" + str(min) + "y" + str(max))
+    #Comparo el numero de usuario con el numero secreto y si son iguales  la variable
+    #"encontrado"  valdra verdadero
     encontrado=(numero_secreto==numero_usuario)
     print("intento" +str(intento)+'>', end="")
     
