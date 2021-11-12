@@ -63,6 +63,19 @@ def aceptar_opcion_menu():
     
     return opcion
 
+def menu():
+    print()
+    print(Fore.GREEN + "MENU")
+    print("1 Jugar al Nivel mas facil, el 1")
+    print("2 Jugar al Nivel 2")
+    print("3 Jugar al Nivel 3")
+    print("4 Jugar al Nivel 4, el mas dificil")
+
+    opcion=aceptar_opcion_menu()
+    return opcion
+
+
+
 
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
