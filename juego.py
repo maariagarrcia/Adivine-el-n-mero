@@ -21,7 +21,7 @@ def clear():
         os.system("clear")
 
 def inputUsuarioOk(input, min, max)
-ok=False
+        ok=False
         try:
               numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
         except:
@@ -29,10 +29,12 @@ ok=False
             pass
         else:
             if(min<=numero_usuario<=max):
-                break
+                ok= True
             else:
                 print("Solo acepto numeros entre " + str(min) + " y " + str(max))
+    return
 
+def
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
