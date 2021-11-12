@@ -45,22 +45,25 @@ def aceptar_opcion_menu():
 
     while (not  salir):
         inputusuario= input(Fore. GREEN + "Dime que opcion deseas" + Fore.WHITE)
-            if(inputusuario== "F" or inputusuario == "f")
-            #Finalizar
+          
+        if (inputusuario== "F" or inputusuario == "f"):
+             # Finalizar
             opcion=1
             salir= True
-            elif (inputusuario== "p" or inputusuario== "p")
-            #Ver puntuaciones
+        elif (inputusuario== "p" or inputusuario== "p")
+            # Ver puntuaciones
             opcion=2
+        else:
+            if input_usuarioOk(inputusuario, 1,4):
+                #JUGAR CON NIVEL ENTRE 1,4
+                salir= True
             else:
-                if input_usuarioOk(inputusuario, 1,4):
-                    #JUGAR CON NIVEL ENTRE 1,4
-                    salir= True
-
-            else:
-                #Opcion incorrecta
+                # Opcion incorrecta
                 print(Fore.RED + "*ATENCION: Seleccione una opcion valida" + Fore.WHITE )
-                return opciom
+    
+    return opcion
+
+
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
