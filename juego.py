@@ -12,13 +12,26 @@ import os
 from colorama import Fore, Back
 
 
-# FUNCIONES
+# F U N C I O N E S
 
-def clear
+def clear():
     if os.name=="nt"
         os.system("cls")
     else:
         os.system("clear")
+
+def inputUsuarioOk(input, min, max)
+ok=False
+        try:
+              numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
+        except:
+            print("Solo acepto numeros. Vuelve a intentarlo")
+            pass
+        else:
+            if(min<=numero_usuario<=max):
+                break
+            else:
+                print("Solo acepto numeros entre " + str(min) + " y " + str(max))
 
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
