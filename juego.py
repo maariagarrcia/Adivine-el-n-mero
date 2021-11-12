@@ -26,18 +26,18 @@ def clear():
 #           True----> numero entre min y max
 #           False---> No cumple requisitos
 def input_usuarioOk(input, min, max):
-        ok=False
-        try:
+    ok=False
+    try:
               numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
-        except:
-            print("Solo acepto numeros. Vuelve a intentarlo")
-            pass
-        else:
-            if(min<=numero_usuario<=max):
+    except:
+        print("Solo acepto numeros. Vuelve a intentarlo")
+        pass
+    else:
+        if(min<=numero_usuario<=max):
                 ok= True
-            else:
-                print("Solo acepto numeros entre " + str(min) + " y " + str(max))
-        return ok
+        else:
+            print("Solo acepto numeros entre " + str(min) + " y " + str(max))
+    return ok
 
 def aceptar_opcion_menu():
     opcion= -1
@@ -66,20 +66,68 @@ def aceptar_opcion_menu():
 def menu():
     print()
     print(Fore.GREEN + "MENU")
-    print("1 Jugar al Nivel mas facil, el 1")
-    print("2 Jugar al Nivel 2")
-    print("3 Jugar al Nivel 3")
-    print("4 Jugar al Nivel 4, el mas dificil")
+    print("----")
+    print("1 - Jugar al Nivel mas facil, el 1")
+    print("2 - Jugar al Nivel 2")
+    print("3 - Jugar al Nivel 3")
+    print("4 - Jugar al Nivel 4, el mas dificil")
+    print("P - Ver puntuaciones")
+    print("F - Finalizar")
+    print(Fore.WHITE)
 
     opcion=aceptar_opcion_menu()
     return opcion
 
+# Acepta un numero entre min y max,  F para finalizar o A para solicitar ayuda
+# Un numero valido y correcto
+# o un -1 si se ha introducido una F
+# o un -2  si se ha introducido una A
+
+def aceptarjugada(min, max):
+    jugada= -1
+    salir= False
+
+    while (not salir):
+        inputusuario== "F" (Fore.YELLOW+ "Dime cual crees que es el numero secreto")
+            if (inputusuario == "F" or inputusuario == "F"):
+                jugada:-1
+                salir: True
+            elif (inputusuario=="A" or inputusuario== "a"):
+                jugada:-2
+                salir: True
+            else:
+                if input_usuarioOk(inputusuario, min,max):
+                    jugada:int(inputusuario)
+                    salir: True
+                else:
+                    print(
+                            Fore.RED + "*ATENCION: Solo acepto numeros (entre" +
+                            Fore.WHITE + str(min)+
+                            Fore.RED + "y" +
+                            Fore.WHITE +str(max) +
+                            Fore.RED + "o" +
+                            Fore.WHITE + "F" +
+                            Fore.RED  + "(finalizar) o " +
+                            Fore.WHITE + "A" +
+                            Fore.RED + "(pedir ayuda)...")
+    return  jugada
 
 
+def mostrarayuda():
+    pass
 
-print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
-print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
-print("Si te equivocas te doy pistas :) ")
+def avisariniciopartida(min,max,numsecreto,depurar):
+    if (depurar):
+        print(Fore.CYAN)
+        print("Chivato para depuracion. He pensado en el", numero_secreto)
+    #Preparativos antes de empezar
+    print(Fore.YELLOW)
+    print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
+    print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
+    print("Si te equivocas te doy pistas :) ")
+    print(Fore.RED + "Durante el juego puedes obtener ayuda pulsando A" + Fore.Yellow)
+    print("Empieza  la partida")
+
 
 # Variable booleana. Permite que el juego finalice cuando el jugador acierta
 encontrado= False
@@ -90,7 +138,7 @@ numero_secreto=random.randint(min,max)
 
 # Este chivatoo me muestra el numero secreto para que sea mas facil depurar el programa
 # Una vez funcione el programa  hay que comentarloo
-#print("Chivato para depuracion. He pensado en el", numero_secreto)
+
 #Empieza el juego y acabara cuando haya sido adivinado  el numero
 print()
 print("---Empieza el juego---")
