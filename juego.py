@@ -1,15 +1,25 @@
+# PAGINAS CONSULTADAS
+#
+# Uso funciones...... https://www.w3schools.com/python/python_functions.asp
+# Como devolver multiples valores con una funcion.... https://www.tutorialspoint.com/returning-multiple-values-in-python
+# Comoo limpiar terminal.... https://www.micro.recursospython.com/recursos/como-limpiar-la-consola.html
+#  Como imprimir colores en la terminal.... https://pypi.org/project/colorama/
+# Uso diccionarios.... https://pythonexamples.org/python-dictionary-operations/
+# Uso modulo.... https://www.w3schools.com/python/python_modules.asp
+
 import random
+import os
+from colorama import Fore, Back
 
-#El juego consiste en que el ORDENADOR escoge un número al azar (random)del 0 al 99.
-# El jugador tiene que adivinarlo con el  menor número de intentos posible.
-# Cada ves que el jugador se equivoca el ORDENADOR le tiene que dar una pista, indicando
-# si el número escogido inicialmente es menor o mayoor que el propuest por el JUGADOR.
 
-# Modificando min y max puedes cambiar el rango de numeros del juego
-min=0
-max=99
+# FUNCIONES
 
-# Preparativos antes de empezar el juego
+def clear
+    if os.name=="nt"
+        os.system("cls")
+    else:
+        os.system("clear")
+
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
@@ -58,5 +68,3 @@ while not encontrado:
 print("---El juego ha finalizado---")
 print()
 print(" El numero que había pensado es el " + str(numero_secreto) + " y lo has adivinado en " + str(intento) + " intentos ")
-
-#FIGMA: https://www.figma.com/file/qzGwgsoAD7svETincR3oqR/Untitled?node-id=0%3A1
