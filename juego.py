@@ -14,13 +14,18 @@ from colorama import Fore, Back
 
 # F U N C I O N E S
 
+#Limpiar terminal
 def clear():
-    if os.name=="nt"
+    if os.name=="nt":
         os.system("cls")
     else:
         os.system("clear")
 
-def inputUsuarioOk(input, min, max)
+# Valida si una cadena es numero entre min y max
+# Devuelve:
+#           True----> numero entre min y max
+#           False---> No cumple requisitos
+def input_usuarioOk(input, min, max):
         ok=False
         try:
               numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
@@ -32,9 +37,30 @@ def inputUsuarioOk(input, min, max)
                 ok= True
             else:
                 print("Solo acepto numeros entre " + str(min) + " y " + str(max))
-    return
+        return ok
 
-def
+def aceptar_opcion_menu():
+    opcion= -1
+    salir: False
+
+    while (not  salir):
+        inputusuario= input(Fore. GREEN + "Dime que opcion deseas" + Fore.WHITE)
+            if(inputusuario== "F" or inputusuario == "f")
+            #Finalizar
+            opcion=1
+            salir= True
+            elif (inputusuario== "p" or inputusuario== "p")
+            #Ver puntuaciones
+            opcion=2
+            else:
+                if input_usuarioOk(inputusuario, 1,4):
+                    #JUGAR CON NIVEL ENTRE 1,4
+                    salir= True
+
+            else:
+                #Opcion incorrecta
+                print(Fore.RED + "*ATENCION: Seleccione una opcion valida" + Fore.WHITE )
+                return opciom
 print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
 print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
 print("Si te equivocas te doy pistas :) ")
@@ -57,17 +83,7 @@ while not encontrado:
     #Ahora vamos  a poner las siguientes condiciones:
     #   Tiene que ser un numero ya que podria  el usuario introducir letras
     #   Tiene que ser entre  el  0 y el 100 (min, max)
-    while True:
-        try:
-              numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
-        except:
-            print("Solo acepto numeros. Vuelve a intentarlo")
-            pass
-        else:
-            if(min<=numero_usuario<=max):
-                break
-            else:
-                print("Solo acepto numeros entre " + str(min) + " y " + str(max))
+    
     #Comparo el numero de usuario con el numero secreto y si son iguales  la variable
     #"encontrado"  valdra verdadero
     encontrado=(numero_secreto==numero_usuario)
