@@ -201,6 +201,32 @@ def jugar(min,max, maxIntentos, puntuaciones):
     if(encontrado):
         actualizarPuntuaciones(diccionarioPuntuaciones)
 
+## Inicio PROGRAMA
+
+diccionarioPuntuaciones= {}
+
+clear() #Limpia la terminal
+finalizar= False
+while (not finalizar):
+    opcion: menu()
+
+    if (opcion==1):
+        jugar(0,100, 10, diccionarioPuntuaciones)
+    elif (opcion==2):
+        jugar(0,1000, 20, diccionarioPuntuaciones)
+    elif (opcion==3):
+        jugar(0,10000, 30, diccionarioPuntuaciones)
+    elif (opcion==4):
+       jugar(0,100000, 40, diccionarioPuntuaciones)
+    elif (opcion==-1): #Salir
+        fianlizar= True
+    elif (opcion==-2): #Ver puntuaciones
+        mostrarPuntuaciones(diccionarioPuntuaciones)
+
+print(Fore.GREEN  + "Nos vemos otro dia :)")
+print(Fore.WHITE)
+
+
 
 
 
