@@ -8,36 +8,11 @@
 # Uso modulo.... https://www.w3schools.com/python/python_modules.asp
 
 import random
-import os
 from colorama import Fore, Back
 
 
 # F U N C I O N E S
 
-#Limpiar terminal
-def clear():
-    if os.name=="nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-
-# Valida si una cadena es numero entre min y max
-# Devuelve:
-#           True----> numero entre min y max
-#           False---> No cumple requisitos
-def input_usuarioOk(input, min, max):
-    ok=False
-
-    try:
-              numero_usuario=int(input("Dime, ¿cual es el numero secreto?"))
-    except:
-        print("Solo acepto numeros. Vuelve a intentarlo")
-        pass #No es un numero
-    else:
-        if(min<=numero_usuario<=max):
-                ok= True
-        
-    return ok
 
 def aceptar_opcion_menu():
     opcion= -1
@@ -88,14 +63,15 @@ def aceptarjugada(min, max):
 
     while (not salir):
         inputusuario= input(Fore.YELLOW+ "Dime cual crees que es el numero secreto")
+        
         if(inputusuario == "F" or inputusuario == "f"):
-            jugada:-1
+            jugada: -1
             salir: True
-        elif (inputusuario=="A" or inputusuario== "a"):
-            jugada:-2
+        elif (inputusuario== "A" or inputusuario== "a"):
+            jugada: -2
             salir: True
         else:
-            if input_usuarioOk(inputusuario, min,max):
+            if helpers.inputUsuarioOk(inputusuario, min,max):
                 jugada:int(inputusuario)
                 salir: True
             else:
@@ -117,10 +93,11 @@ def aceptarjugada(min, max):
 def avisariniciopartida(min, max, numero_secreto, depurar):
     if (depurar):
         print(Fore.CYAN)
-        print("Chivato para depuracion. He pensado en el", numero_secreto)
+        #print("Chivato para depuracion. He pensado en el", numero_secreto)
 
  #Preparativos antes de empezar
     print(Fore.YELLOW)
+    print()
     print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
     print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
     print("Si te equivocas te doy pistas :) ")
@@ -129,19 +106,19 @@ def avisariniciopartida(min, max, numero_secreto, depurar):
 
     
 def avisarfinpartida(numero_secreto, intento, maxintentos, encontrado, finalizar):
-    print(Fore.YELLOW+ "El juego  ha finalizado :(")
+    print(Fore.YELLOW+ " El juego  ha finalizado :( ")
     print()
 
 
     if(encontrado):
-        print(Fore. RED+"Genial,  lo has adivinado en o has adivinado en " + str(intento) + " intentos ")
+        print(Fore. RED + "Genial,  lo has adivinado en o has adivinado en " + str(intento) + " intentos ")
     elif(finalizar):
         print("Ya veo  que no quieres continuar con la partida :/")
     elif(intento >= maxintentos):
         print("Has realizado"  + str(intento) + "intentos")
 
     print("El numero que había pensado es el " + str(numero_secreto))
-    print("Has realizad" + str(intento) + "intentos")
+    print("Has realizado" + str(intento) + "intentos")
 
 def mostrarayuda(minactual, maxactual):
     print(
@@ -174,8 +151,8 @@ def aceptarJugadaMasterIA(minActual, maxActual):
     print(jugadaIA)
     return jugadaIA
 
-def jugar(min,max, maxIntentos, puntuaciones, usarIA):
-    clear()
+def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
+    herpers.clear()
 
     numero_secreto=random.randint(min,max)
     avisariniciopartida(min,max,numero_secreto, True)
@@ -187,7 +164,7 @@ def jugar(min,max, maxIntentos, puntuaciones, usarIA):
 
     while (not finalizar and not encontrado and intento < maxIntentos):
         if (usarIA):
-            # mostrarAyuda(minActual, maxActual)
+            mostrarAyuda(minActual, maxActual)
             numero_usuario=aceptarJugadaMasterIA(minActual, maxActual)
         else:
             numero_usuario= aceptarjugada(min,max)
