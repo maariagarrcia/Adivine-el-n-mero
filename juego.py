@@ -41,7 +41,7 @@ def aceptarjugadapersona(min, max):
                 print(
                     Fore.RED + '* ATENCION: Solo acepto números (entre ' + 
                     Fore.WHITE + str(min) + 
-                    Fore.RED + ' y ' + 
+                    Fore.RED + ' y  ' + 
                     Fore.WHITE + str(max) + 
                     Fore.RED + ') o ' + 
                     Fore.WHITE + '"F"' + 
@@ -54,12 +54,12 @@ def aceptarjugadapersona(min, max):
 def avisariniciopartida(min, max, numero_secreto, depurar):
     if (depurar):
         print(Fore.CYAN)
-        print("Chivato para depuracion. He pensado en el", numero_secreto)
+        #print("Chivato para depuracion. He pensado en el", numero_secreto)
 
  #Preparativos antes de empezar
     print(Fore.YELLOW)
     print()
-    print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
+    print("Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
     print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
     print("Si te equivocas te doy pistas :) ")
     print(Fore.RED + "Durante el juego puedes obtener ayuda pulsando A" + Fore.YELLOW)
@@ -79,13 +79,13 @@ def avisarfinpartida(numero_secreto, intento, maxintentos, encontrado, finalizar
         print("Has realizado"  + str(intento) + "intentos")
 
     print("El numero que había pensado es el " + str(numero_secreto))
-    print("Has realizado" + str(intento) + "intentos")
+    print("Has realizado " + str(intento) + " intentos ")
 
 def mostrarayuda(minactual, maxactual):
     print(
-        Fore.RED + "*Pista: El numero secreto debe estar entre" +
+        Fore.RED + "* Pista: El numero secreto debe estar entre " +
         Fore.WHITE +str(minactual) +
-        Fore.RED + "y" +
+        Fore.RED + " y " +
         Fore.WHITE + str (maxactual)
     )
 
@@ -139,10 +139,10 @@ def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
             encontrado= (numero_usuario==numero_secreto)
             if(numero_usuario>numero_secreto):
                 maxActual=numero_usuario
-                print(Fore.YELLOW +  "El"  +str(numero_usuario)+ " es MAYOR que el numero secreto")
+                print(Fore.YELLOW +  "El "  + str(numero_usuario)+ " es MAYOR que el numero secreto")
             elif(numero_usuario<numero_secreto):
                 minActual= numero_usuario
-                print(Fore. YELLOW + " El " + str(numero_usuario) + " es MENOR que el numero secreto")
+                print(Fore. YELLOW + "El " + str(numero_usuario) + " es MENOR que el numero secreto")
    
     avisarfinpartida(numero_secreto, intento, maxIntentos, encontrado, finalizar)
     
