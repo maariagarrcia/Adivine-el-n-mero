@@ -50,7 +50,7 @@ def aceptar_opcion_menu():
              # Finalizar
             opcion=1
             salir= True
-        elif (inputusuario== "p" or inputusuario== "p")
+        elif (inputusuario== "p" or inputusuario== "p"):
             # Ver puntuaciones
             opcion=2
         elif input_usuarioOk(inputusuario, 1,4):
@@ -87,35 +87,35 @@ def aceptarjugada(min, max):
     salir= False
 
     while (not salir):
-        inputusuario== "F" (Fore.YELLOW+ "Dime cual crees que es el numero secreto")
-            if (inputusuario == "F" or inputusuario == "F"):
-                jugada:-1
-                salir: True
-            elif (inputusuario=="A" or inputusuario== "a"):
-                jugada:-2
+        inputusuario= input(Fore.YELLOW+ "Dime cual crees que es el numero secreto")
+        if(inputusuario == "F" or inputusuario == "F"):
+            jugada:-1
+            salir: True
+        elif (inputusuario=="A" or inputusuario== "a"):
+            jugada:-2
+            salir: True
+        else:
+            if input_usuarioOk(inputusuario, min,max):
+                jugada:int(inputusuario)
                 salir: True
             else:
-                if input_usuarioOk(inputusuario, min,max):
-                    jugada:int(inputusuario)
-                    salir: True
-                else:
-                    print(
-                            Fore.RED + "*ATENCION: Solo acepto numeros (entre" +
-                            Fore.WHITE + str(min)+
-                            Fore.RED + "y" +
-                            Fore.WHITE +str(max) +
-                            Fore.RED + "o" +
-                            Fore.WHITE + "F" +
-                            Fore.RED  + "(finalizar) o " +
-                            Fore.WHITE + "A" +
-                            Fore.RED + "(pedir ayuda)...")
+                print(
+                        Fore.RED + "*ATENCION: Solo acepto numeros (entre" +
+                        Fore.WHITE + str(min)+
+                        Fore.RED + "y" +
+                        Fore.WHITE +str(max) +
+                        Fore.RED + "o" +
+                        Fore.WHITE + "F" +
+                        Fore.RED  + "(finalizar) o " +
+                        Fore.WHITE + "A" +
+                        Fore.RED + "(pedir ayuda)...")
     return  jugada
 
 
 def mostrarayuda():
     pass
 
-def avisariniciopartida(min,max,numsecreto,depurar):
+def avisariniciopartida(min, max, numero_secreto, depurar):
     if (depurar):
         print(Fore.CYAN)
         print("Chivato para depuracion. He pensado en el", numero_secreto)
@@ -129,7 +129,7 @@ def avisariniciopartida(min,max,numsecreto,depurar):
     print("Empieza  la partida")
 
 
-def avisarfinpartida(numsecreto, intento, maxiintentos, encontrado, finalizar):
+def avisarfinpartida(numero_secreto, intento, maxintentos, encontrado, finalizar):
     print(Fore.YELLOW+ "El juego  ha finalizado :(")
     print()
 
@@ -140,50 +140,71 @@ def avisarfinpartida(numsecreto, intento, maxiintentos, encontrado, finalizar):
         print("Ya veo  que no quieres continuar con la partida :/")
     elif(intento >= maxintentos):
         print("Has realizado"  + str(intento) + "intentos")
+
     print("El numero que había pensado es el " + str(numero_secreto))
     print("Has realizad" + str(intento) + "intentos")
-    
+
 def mostrarpista(minactual, maxactual):
     print(
-        Fore.RED + "*Pista: El numeroo secreto debe estar entre" +
+        Fore.RED + "*Pista: El numero secreto debe estar entre" +
         Fore.White +str(minactual) +
         Fore.RED + "y" +
         Fore.White + str (maxactual)
     )
-
-
-
-# Variable booleana. Permite que el juego finalice cuando el jugador acierta
-encontrado= False
-# Cuenta el numero de intentos que el jugadoor ha realizado
-intento=0
-# Seleccionar un numero de forma aleatoria
-numero_secreto=random.randint(min,max)
-
-# Este chivatoo me muestra el numero secreto para que sea mas facil depurar el programa
-# Una vez funcione el programa  hay que comentarloo
-
-#Empieza el juego y acabara cuando haya sido adivinado  el numero
-print()
-print("---Empieza el juego---")
-while not encontrado:
-    intento= intento+1
-    #Ahora vamos  a poner las siguientes condiciones:
-    #   Tiene que ser un numero ya que podria  el usuario introducir letras
-    #   Tiene que ser entre  el  0 y el 100 (min, max)
+# Donde se guardan las listas
+def actualizarPuntuaciones(diccionarioPuntuaciones):
+    print(Fore.WHITE)
+    print("Actualizacion de puntuaciones")
+    nombreJugador= input("Dime tu nombre")
+    if(nombreJugador in diccionarioPuntuaciones):
+        #Si el jugador existe en el diccionario apuntar una partida mas
+        diccionarioPuntuaciones [nombreJugador] = diccionarioPuntuaciones[nombreJugador] + 1
+    else:
+        #Caso de no existir se añadira un item al diccionario
+        diccionarioPuntuaciones[nombreJugador] =1
     
-    #Comparo el numero de usuario con el numero secreto y si son iguales  la variable
-    #"encontrado"  valdra verdadero
-    encontrado=(numero_secreto==numero_usuario)
-    print("intento" +str(intento)+'>', end="")
+def mostrarPuntuaciones (diccionarioPuntuaciones):
+    print(Fore. WHITE)
+    print("Lista de partidas ganadas")
+    print(diccionarioPuntuaciones)
+
+def jugar(min,max, maxIntentos, puntuaciones):
+    clear()
+
+    numero_secreto=random.randint(min,max)
+    avisariniciopartida(min,max,numero_secreto, True)
+    intento=0          #Contador de numero de intentos
+    encontrado= False  #Indica que se ha adivinado el numero
+    finalizar= False   #Indica que el usuario quiere  finalizar la partida
+    minActual= min     #Minimo que ya sabemos que puede ser el secreto
+    maxActual=  max    #Es el maxim que ya sabemos que puede ser el secreto
+
+    while (not finalizar and not encontrado and intento < maxIntentos):
+        numero_usuario= aceptarjugada(min,max)
+        if(numero_usuario == -1):
+            finalizar= True
+        elif (numero_usuario == -2):
+            mostrarpista(minActual, maxActual)
+        else:
+            intento= intento+1
+            #Comprobar si el jugadoor ha acertado el numero
+            encontrado=(numero_usuario==numero_secreto)
+            if(numero_usuario>numero_secreto):
+                maxActual=numero_usuario
+                print(Fore.YELLOW +  "El"  +str(numero_usuario)+ " es MAYOR que el numero secreto")
+            elif(numero_usuario<numero_secreto):
+                minActual= numero_usuario
+                print(Fore. YELLOW + " El " + str(numero_usuario) + " es MENOR que el numero secreto")
+   
+    avisarfinpartida(numero_usuario, intento, maxIntentos, encontrado, finalizar)
     
     if(encontrado):
-        print("Has ganado")
-    elif(numero_usuario>numero_secreto):
-        print("Demasiado grande.7 El " +str(numero_usuario)+ " es MAYOR que el numero secreto")
-    else:
-        print("Demasiado pequeño. El " + str(numero_usuario) + " es MENOR que el numero secreto")
+        actualizarPuntuaciones(diccionarioPuntuaciones)
 
-print("---El juego ha finalizado---")
-print()
-print(" El numero que había pensado es el " + str(numero_secreto) + " y l
+
+
+
+    
+    
+
+
