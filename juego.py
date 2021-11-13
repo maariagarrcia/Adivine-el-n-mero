@@ -8,7 +8,6 @@
 # Uso modulo.... https://www.w3schools.com/python/python_modules.asp
 
 import random
-from colorama import Fore, Back
 
 
 # F U N C I O N E S
