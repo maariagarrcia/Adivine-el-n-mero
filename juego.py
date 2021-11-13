@@ -8,91 +8,53 @@
 # Uso modulo.... https://www.w3schools.com/python/python_modules.asp
 
 import random
-
+import helpers
+import menu
+from colorama import Fore, Back
 
 # F U N C I O N E S
 
-
-def aceptar_opcion_menu():
-    opcion= -1
-    salir: False
-
-    while (not  salir):
-        inputusuario= input(Fore. GREEN + "Dime que opcion deseas" + Fore.WHITE)
-          
-        if (inputusuario== "F" or inputusuario == "f"):
-             # Finalizar
-            opcion=-1
-            salir= True
-        elif (inputusuario== " P" or inputusuario== "p"):
-            # Ver puntuaciones
-            opcion=-2
-        elif input_usuarioOk(inputusuario, 1,4):
-            #JUGAR CON NIVEL ENTRE 1,4
-            salir= True
-        else:
-            # Opcion incorrecta
-            print(Fore.RED + "*ATENCION: Seleccione una opcion valida" + Fore.WHITE )
-    
-    return opcion
-
-def menu():
-    print()
-    print(Fore.GREEN + "MENU")
-    print("----")
-    print("1 - Jugar al Nivel mas facil, el 1")
-    print("2 - Jugar al Nivel 2")
-    print("3 - Jugar al Nivel 3")
-    print("4 - Jugar al Nivel 4, el mas dificil")
-    print("P - Ver puntuaciones")
-    print("F - Finalizar")
-    print(Fore.WHITE)
-
-    opcion=aceptar_opcion_menu()
-    return opcion
 
 # Acepta un numero entre min y max,  F para finalizar o A para solicitar ayuda
 # Un numero valido y correcto
 # o un -1 si se ha introducido una F
 # o un -2  si se ha introducido una A
 
-def aceptarjugada(min, max):
+def aceptarjugadapersona(min, max):
     jugada= -1
     salir= False
 
     while (not salir):
-        inputusuario= input(Fore.YELLOW+ "Dime cual crees que es el numero secreto")
+        inputusuario= input(Fore.YELLOW + "Dime cual crees que es el numero secreto")
         
         if(inputusuario == "F" or inputusuario == "f"):
-            jugada: -1
-            salir: True
+            jugada= -1
+            salir= True
         elif (inputusuario== "A" or inputusuario== "a"):
-            jugada: -2
-            salir: True
+            jugada= -2
+            salir= True
         else:
-            if helpers.inputUsuarioOk(inputusuario, min,max):
-                jugada:int(inputusuario)
-                salir: True
+            if helpers.input_usuarioOk(inputusuario, min,max):
+                jugada=int(inputusuario)
+                salir= True
             else:
                 print(
-                        Fore.RED + "*ATENCION: Solo acepto numeros (entre" +
-                        Fore.WHITE + str(min)+
-                        Fore.RED + "y" +
-                        Fore.WHITE +str(max) +
-                        Fore.RED + "o" +
-                        Fore.WHITE + "F" +
-                        Fore.RED  + "(finalizar) o " +
-                        Fore.WHITE + "A" +
-                        Fore.RED + "(pedir ayuda)...")
-    return  jugada
-
-
+                    Fore.RED + '* ATENCION: Solo acepto números (entre ' + 
+                    Fore.WHITE + str(min) + 
+                    Fore.RED + ' y ' + 
+                    Fore.WHITE + str(max) + 
+                    Fore.RED + ') o ' + 
+                    Fore.WHITE + '"F"' + 
+                    Fore.RED + ' (finalizar) o '+
+                    Fore.WHITE + '"A"' +
+                    Fore.RED + ' (pedir ayuda) ...')
+    return jugada
 
 
 def avisariniciopartida(min, max, numero_secreto, depurar):
     if (depurar):
         print(Fore.CYAN)
-        #print("Chivato para depuracion. He pensado en el", numero_secreto)
+        print("Chivato para depuracion. He pensado en el", numero_secreto)
 
  #Preparativos antes de empezar
     print(Fore.YELLOW)
@@ -100,7 +62,7 @@ def avisariniciopartida(min, max, numero_secreto, depurar):
     print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
     print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
     print("Si te equivocas te doy pistas :) ")
-    print(Fore.RED + "Durante el juego puedes obtener ayuda pulsando A" + Fore.Yellow)
+    print(Fore.RED + "Durante el juego puedes obtener ayuda pulsando A" + Fore.YELLOW)
     print("Empieza  la partida")
 
     
@@ -151,7 +113,7 @@ def aceptarJugadaMasterIA(minActual, maxActual):
     return jugadaIA
 
 def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
-    herpers.clear()
+    helpers.clear()
 
     numero_secreto=random.randint(min,max)
     avisariniciopartida(min,max,numero_secreto, True)
@@ -163,17 +125,17 @@ def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
 
     while (not finalizar and not encontrado and intento < maxIntentos):
         if (usarIA):
-            mostrarAyuda(minActual, maxActual)
+            mostrarayuda(minActual, maxActual)
             numero_usuario=aceptarJugadaMasterIA(minActual, maxActual)
         else:
-            numero_usuario= aceptarjugada(min,max)
+            numero_usuario= aceptarjugadapersona(min,max)
         if(numero_usuario == -1):
             finalizar= True
         elif (numero_usuario == -2):
-            mostrarayuda(minActual, maxActual)
+            mostrarayuda(minActual,maxActual)
         else:
             intento= intento +1
-            #Comprobar si el jugadoor ha acertado el numero
+            #Comprobar si el jugador ha acertado el numero
             encontrado= (numero_usuario==numero_secreto)
             if(numero_usuario>numero_secreto):
                 maxActual=numero_usuario
@@ -182,7 +144,7 @@ def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
                 minActual= numero_usuario
                 print(Fore. YELLOW + " El " + str(numero_usuario) + " es MENOR que el numero secreto")
    
-    avisarfinpartida(numero_usuario, intento, maxIntentos, encontrado, finalizar)
+    avisarfinpartida(numero_secreto, intento, maxIntentos, encontrado, finalizar)
     
     if(encontrado):
         actualizarPuntuaciones(diccionarioPuntuaciones)
@@ -191,21 +153,23 @@ def jugar(min,max, maxIntentos, diccionarioPuntuaciones, usarIA):
 
 diccionarioPuntuaciones= {}
 
-clear() #Limpia la terminal
+helpers.clear() #Limpia la terminal
 finalizar= False
 while (not finalizar):
-    opcion: menu()
+    opcion = menu.menu()
 
     if (opcion==1):
-        jugar(0,100, 10, diccionarioPuntuaciones)
+        jugar(0, 100, 10, diccionarioPuntuaciones, False)
     elif (opcion==2):
-        jugar(0,1000, 20, diccionarioPuntuaciones)
+        jugar(0,1000, 20, diccionarioPuntuaciones, False)
     elif (opcion==3):
-        jugar(0,10000, 30, diccionarioPuntuaciones)
+        jugar(0,10000, 30, diccionarioPuntuaciones, False)
     elif (opcion==4):
-       jugar(0,100000, 40, diccionarioPuntuaciones)
+       jugar(0,100000, 40, diccionarioPuntuaciones, False)
+    elif (opcion==5):
+        jugar(0, 10000000,  50, diccionarioPuntuaciones, True)
     elif (opcion==-1): #Salir
-        fianlizar= True
+        finalizar= True
     elif (opcion==-2): #Ver puntuaciones
         mostrarPuntuaciones(diccionarioPuntuaciones)
 
