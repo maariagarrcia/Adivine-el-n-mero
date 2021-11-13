@@ -53,13 +53,12 @@ def aceptar_opcion_menu():
         elif (inputusuario== "p" or inputusuario== "p")
             # Ver puntuaciones
             opcion=2
-        else:
-            if input_usuarioOk(inputusuario, 1,4):
+        elif input_usuarioOk(inputusuario, 1,4):
                 #JUGAR CON NIVEL ENTRE 1,4
                 salir= True
-            else:
-                # Opcion incorrecta
-                print(Fore.RED + "*ATENCION: Seleccione una opcion valida" + Fore.WHITE )
+        else:
+            # Opcion incorrecta
+            print(Fore.RED + "*ATENCION: Seleccione una opcion valida" + Fore.WHITE )
     
     return opcion
 
@@ -132,12 +131,27 @@ def avisariniciopartida(min,max,numsecreto,depurar):
 
 def avisarfinpartida(numsecreto, intento, maxiintentos, encontrado, finalizar):
     print(Fore.YELLOW+ "El juego  ha finalizado :(")
+    print()
+
+
     if(encontrado):
         print(Fore. RED+"Genial,  lo has adivinado en o has adivinado en " + str(intento) + " intentos ")
     elif(finalizar):
         print("Ya veo  que no quieres continuar con la partida :/")
-    elf(intento>= maxintentos :
-        print"Has realizado"  + str(intento) +"intentos")
+    elif(intento >= maxintentos):
+        print("Has realizado"  + str(intento) + "intentos")
+    print("El numero que había pensado es el " + str(numero_secreto))
+    print("Has realizad" + str(intento) + "intentos")
+    
+def mostrarpista(minactual, maxactual):
+    print(
+        Fore.RED + "*Pista: El numeroo secreto debe estar entre" +
+        Fore.White +str(minactual) +
+        Fore.RED + "y" +
+        Fore.White + str (maxactual)
+    )
+
+
 
 # Variable booleana. Permite que el juego finalice cuando el jugador acierta
 encontrado= False
