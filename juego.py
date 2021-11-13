@@ -120,7 +120,8 @@ def avisariniciopartida(min,max,numsecreto,depurar):
     if (depurar):
         print(Fore.CYAN)
         print("Chivato para depuracion. He pensado en el", numero_secreto)
-    #Preparativos antes de empezar
+
+ #Preparativos antes de empezar
     print(Fore.YELLOW)
     print(" Soy el ordenador y voy a pensar un número entre " +  str(min) + " y " +  str(max))
     print("Ya lo tengo, ahora tienes que adivinar mi numero secreto")
@@ -128,6 +129,15 @@ def avisariniciopartida(min,max,numsecreto,depurar):
     print(Fore.RED + "Durante el juego puedes obtener ayuda pulsando A" + Fore.Yellow)
     print("Empieza  la partida")
 
+
+def avisarfinpartida(numsecreto, intento, maxiintentos, encontrado, finalizar):
+    print(Fore.YELLOW+ "El juego  ha finalizado :(")
+    if(encontrado):
+        print(Fore. RED+"Genial,  lo has adivinado en o has adivinado en " + str(intento) + " intentos ")
+    elif(finalizar):
+        print("Ya veo  que no quieres continuar con la partida :/")
+    elf(intento>= maxintentos :
+        print"Has realizado"  + str(intento) +"intentos")
 
 # Variable booleana. Permite que el juego finalice cuando el jugador acierta
 encontrado= False
@@ -162,4 +172,4 @@ while not encontrado:
 
 print("---El juego ha finalizado---")
 print()
-print(" El numero que había pensado es el " + str(numero_secreto) + " y lo has adivinado en " + str(intento) + " intentos ")
+print(" El numero que había pensado es el " + str(numero_secreto) + " y l
